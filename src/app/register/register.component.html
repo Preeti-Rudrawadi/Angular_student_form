@@ -1,0 +1,99 @@
+
+<div class="hey" fxLayoutAlign="center center" fxFlexFill class="main-div">
+  <mat-card fxFlex="30">
+    <mat-toolbar color="primary">Registration Page</mat-toolbar>
+
+
+
+
+
+    
+    <form [formGroup]="registerForm" fxLayoutAlign="stretch" fxLayout="column" (ngSubmit)="onSubmit()" >
+
+      <mat-form-field class="form-group">
+        <input type="text" formControlName="username" matInput placeholder="username" required >
+        <mat-error *ngIf="registerForm.controls['username'].errors?.required">username is required </mat-error>
+       <!---- <mat-error *ngIf="registerForm.controls['username'].errors?.pattern">username is invalid</mat-error>-->
+      </mat-form-field>
+
+      <mat-form-field class="form-group">
+        <input type="text" formControlName="address" matInput placeholder="address"  required>
+        <mat-error *ngIf="registerForm.controls['address'].errors?.required">address is required </mat-error>
+        <!--<mat-error *ngIf="registerForm.controls['username'].errors?.pattern">username is invalid</mat-error>
+        --></mat-form-field>
+    
+
+      <mat-form-field class="form-group">
+        <input type="number" formControlName="zipcode" matInput placeholder="zipcode" maxlength ="6"
+          #zipcode required>
+       <mat-hint align="end">{{zipcode.value.length}}/6</mat-hint>
+       <mat-error *ngIf="registerForm.controls['zipcode'].errors?.required">zipcode is required </mat-error>
+       <mat-error *ngIf="registerForm.controls['zipcode'].errors?.pattern">zipcode is invalid</mat-error>
+       </mat-form-field>
+
+     <mat-form-field class="form-group">
+        <input type="number" formControlName="mobno" matInput placeholder="mobno" minlength="10" required >
+        <mat-error *ngIf="registerForm.controls['mobno'].errors?.required">mobno is required </mat-error>
+        <mat-error *ngIf="registerForm.controls['mobno'].errors?.pattern">mobno is invalid</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form-group">
+        <input type="email" formControlName="email" matInput placeholder="Ex.mail@gmail.com"  required>
+        <!--<div *ngIf="registerForm.controls.email.errors?.pattern">
+          email invalid
+        </div>-->
+        <mat-error *ngIf="registerForm.controls['email'].errors?.required">email is required </mat-error>
+        <mat-error *ngIf="registerForm.controls['email'].errors?.pattern">email is invalid</mat-error>
+      </mat-form-field>
+
+      <mat-form-field apperance="fill" class="form-group">
+        <mat-label>select_country</mat-label>
+        <select formControlName="select_country"  matNativeControl required>
+          <option value="INDIA">INDIA</option>
+          <option value="US">US</option>
+          <option value="UK">UK</option>
+          <option value="JAPAN">JAPAN</option>
+        </select>
+        <mat-error *ngIf="registerForm.controls['select_country'].errors?.required">country must be selected </mat-error>
+      </mat-form-field>
+
+      <mat-form-field apperance="fill" class="form-group">
+        <mat-label>select_state</mat-label>
+        <select formControlName="select_state"  matNativeControl required>
+          <option value="maharashtra">maharashtra</option>
+          <option value="karnataka">karnataka</option>
+          <option value="delhi">delhi</option>
+          <option value="kerala">kerala</option>
+        </select>
+        <mat-error *ngIf="registerForm.controls['select_state'].errors?.required">state must be selected </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="form-group">
+        <input type="password" formControlName="password" matInput [type]="hide ? 'password' : 'text'"
+          placeholder="password" required>
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="registerForm.controls['password'].errors?.required">password is required </mat-error>
+        <mat-error *ngIf="registerForm.controls['password'].errors?.pattern">password is invalid</mat-error>
+
+      </mat-form-field>
+
+
+
+
+
+      <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+
+      <button [disabled]="!registerForm.valid" color="primary" (click)="onSubmit" mat-raised-button type="submit">Submit</button>
+      
+
+
+
+
+
+    </form>
+  </mat-card>
+</div>
+<router-outlet></router-outlet>

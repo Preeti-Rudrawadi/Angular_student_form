@@ -1,0 +1,50 @@
+
+
+<div fxLayoutAlign="center center" fxFlexFill class="main-div">
+  <mat-card fxFlex="30">
+    <mat-toolbar color="primary">Login Page</mat-toolbar>
+    <form [formGroup]="loginForm" fxLayoutAlign="stretch" fxLayout="column" (ngSubmit)="onSubmit()" >
+
+   
+
+      <mat-form-field class="form-group">
+        <input type="email" formControlName="email" matInput placeholder="Ex.mail@gmail.com"  required>
+        <!--<div *ngIf="registerForm.controls.email.errors?.pattern">
+          email invalid
+        </div>-->
+        <mat-error *ngIf="loginForm.controls['email'].errors?.required">email is required </mat-error>
+        <mat-error *ngIf="loginForm.controls['email'].errors?.pattern">email is invalid</mat-error>
+      </mat-form-field>
+
+      
+
+      <mat-form-field appearance="fill" class="form-group">
+        <input type="password" formControlName="password" matInput [type]="hide ? 'password' : 'text'"
+          placeholder="password" required>
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="loginForm.controls['password'].errors?.required">password is required </mat-error>
+        <mat-error *ngIf="loginForm.controls['password'].errors?.pattern">password is invalid</mat-error>
+
+      </mat-form-field>
+
+
+
+
+
+    <div class="form-group col-12">
+        <button  color="primary" (click)="onSubmit" mat-raised-button type="submit">Submit</button>
+      
+
+        <a routerLink="../register" class="btn btn-link">Register</a>
+    </div>
+   
+       
+
+
+
+    </form>
+  </mat-card>
+</div>

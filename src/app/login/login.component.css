@@ -1,0 +1,14 @@
+.main-div mat-card{
+    padding: 20px ;
+}
+.reg.form{
+    padding: 20px;
+}
+.invalid{
+    color: #f44336;
+}
+
+.text-center{
+    margin-top: 20px;
+}
+
