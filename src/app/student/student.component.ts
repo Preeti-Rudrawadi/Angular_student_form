@@ -49,8 +49,7 @@ export class StudentComponent implements OnInit {
   dataSource = ELEMENT_DATA;
   searchKey!: string;
   listData: any;
-  constructor(public dialog:MatDialog, public router:Router,private interactionService:InteractionService   ){}
-
+  constructor(public dialog:MatDialog, public router:Router,private interactionService:InteractionService){}
   openDialog(element : any){
     console.log(element);
     let dialogRef=this.dialog.open(DialogComponent);
